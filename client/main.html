@@ -3,19 +3,26 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
-</head>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+
+</head>
+<!--<button onclick="hey()"> CLICK ME </button>-->
 <body>
 <nav>
     <div class="nav-wrapper">
         <div class="row">
             <div class="col s8">
-                <a href="#" class="brand-logo">SocialCinemaReview</a>
+                <a href="#" class="brand-logo">Social Cinema Review</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>{{> loginButtons}}</li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
+                    <li><a href="badges.html">JavaScript</a></li>
+                    <li><a href="collapsible.html"> Components </a></li>
+                    <!--<li><a href="contactUs.html" id="contactClick">Contact Us</a></li>-->
+                    <!--<li><a href="test.html" id="meetTeamClick"> Meet the Team</a></li>-->
+
+
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="sass.html">Sass</a></li>
@@ -39,24 +46,59 @@
 
     </div>
 </div>
+
+
+<div id="landoPage">
+
+    <h1> Welcome</h1>
+
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper finibus odio. Fusce luctus vestibulum nunc
+        in tincidunt. Suspendisse id dictum quam. Sed volutpat dictum dui, non rutrum enim. Maecenas in rutrum purus.
+        Etiam a mi enim. Maecenas placerat eu neque non bibendum. Mauris dolor leo, faucibus ac metus et, accumsan
+        hendrerit elit. Phasellus feugiat sapien at quam congue molestie. Ut sagittis, augue et tristique viverra, odio
+        elit imperdiet dui, ut condimentum nisi risus vitae lorem. Vivamus aliquet lorem in elementum dignissim </p>
+
+    <h1> Description </h1>
+
+    <p> Quisque id purus lacinia, eleifend purus vel, mattis diam. Nunc tempor pretium orci, sed eleifend velit ornare
+        vitae. Vivamus elementum turpis nisl, id ultrices nisl congue a. Aliquam placerat enim vel eleifend pulvinar.
+        Morbi id scelerisque neque, in accumsan velit. Nunc semper id quam ac aliquam. Praesent id euismod ipsum. Fusce
+        nec enim sollicitudin ligula maximus sagittis in vitae mauris. Maecenas quis dapibus mauris. Nullam sed
+        facilisis quam. Curabitur vel placerat eros, ut ultricies felis.</p>
+
+    <h1> Motivation </h1>
+
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper finibus odio. Fusce luctus vestibulum nunc
+        in tincidunt. Suspendisse id dictum quam. Sed volutpat dictum dui, non rutrum enim. Maecenas in rutrum purus.
+        Etiam a mi enim. Maecenas placerat eu neque non bibendum. Mauris dolor leo, faucibus ac metus et, accumsan
+        hendrerit elit. Phasellus feugiat sapien at quam congue molestie. Ut sagittis, augue et tristique viverra, odio
+        elit imperdiet dui, ut condimentum nisi risus vitae lorem. Vivamus aliquet lorem in elementum dignissim </p>
+
+</div>
+
+
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '1248196511916479',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v2.8'
+            appId: '1248196511916479',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.8'
         });
         FB.AppEvents.logPageView();
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
 </script>
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
