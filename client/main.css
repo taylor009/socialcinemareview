@@ -4,22 +4,48 @@ input[type="search"] {
 }
 
 body {
-    background-image: url("https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?w=940&h=650&auto=compress&cs=tinysrgb");
-    /*background-color: aqua;*/
+    background-image: url("http://i.imgur.com/vPgi1Ul.jpg");
+    /*background-image: url("https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?w=940&h=650&auto=compress&cs=tinysrgb");*/
     background-size: cover;
+
 }
 
-a, #landoPage {
+a {
     font-family: 'Quicksand', sans-serif;
 }
 
-/*.brand-logo {*/
-/*background-color: aqua;*/
-/*}*/
+.nav-wrapper{
+    /*background-color: orange;*/
+/*margin-bottom: 0;*/
+}
 
-/*.nav-wrapper{*/
-/*background-color: aquamarine;*/
-/*}*/
+h1 {padding-top: 0;
+    padding-top: 15px;
+    padding-bottom: 0;
+    padding-left: 15px;
+    color: mintcream;
+    text-shadow: 2px 2px 4px #000;
+}
+
+p {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px;
+    /*color: mintcream;*/
+    /*text-shadow: 2px 2px 4px #000*/
+}
+
+#landoPage {
+    background-color: rgba(45,140, 240,0.5);
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+
+#pic1, #pic2{
+    padding-left:15px;
+}
+
 
 @media only screen and (max-width: 992px) {
     nav .brand-logo {
