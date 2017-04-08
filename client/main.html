@@ -1,118 +1,127 @@
-<head>
-    <title>SociaCinemaReview</title>
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+<div layout="column" layout-fill ng-controller="SearchCtrl">
+  <md-toolbar style="position: fixed;" ng-if="true" layout="row" class="md-whiteframe-z4">
+    <div layout="row" class="md-toolbar-tools">
 
-</head>
-<!--<button onclick="hey()"> CLICK ME </button>-->
-<body>
-
-<nav>
-
-    <div class="nav-wrapper">
-        <div class="row">
-            <div class="col s8">
-                <a href="#" class="brand-logo">Social Cinema Review</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>{{> loginButtons}}</li>
-                    <li><a href="badges.html">JavaScript</a></li>
-                    <li><a href="collapsible.html"> Components </a></li>
-                    <!--<li><a href="contactUs.html" id="contactClick">Contact Us</a></li>-->
-                    <!--<li><a href="test.html" id="meetTeamClick"> Meet the Team</a></li>-->
-
-
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">Javascript</a></li>
-                    <li><a href="mobile.html">Mobile</a></li>
-                </ul>
-            </div>
-            <form class="col s4">
-                <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
+      <md-button ng-show="showDetails" ng-click="ReturnToList()" aria-label="Go Back">
+         Go Back
+       </md-button>
+      <div layout-align="center">
+        <span>SociaCinemaReview</span>
         </div>
-    </div>
-</nav>
-<div class="row">
-    <div>
+        <div id="login">
+            <login-buttons></login-buttons>
+        </div>
+
+           <span flex></span>
+
+        <md-button ng-hide="isSearchEmpty()||showDetails||isFirstPage()"  ng-click="previousPage()" aria-label="Filters">
+        Previous
+         </md-button>
+         <h6 ng-hide="isSearchEmpty()||showDetails">Page {{page}}</h6>
+         <md-button ng-hide="isSearchEmpty()||showDetails"  ng-click="nextPage()" aria-label="Filters">
+          Next
+          </md-button>
 
     </div>
+  </md-toolbar>
+  <md-content layout-margin style="margin-top:1.7cm;" flex>
+  <md-card ng-hide="showDetails">
+  <div flex layout="row" layout-xs="column" layout-align="center">
+    <div layout="row" flex-offset="5" flex>
+  <md-input-container md-no-float flex="70">
+      <label>Search</label>
+          <input  ng-model="search" ng-change="fetchResults()">
+        </md-input-container>
+        <div flex>
+        <md-input-container>
+        <md-button  ng-hide="isSearchEmpty()" class="md-icon-button md-primary" aria-label="Settings">
+          <img ng-click="Delete()" class="icon icons8-Delete"
+          src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0ibnVsbCIgaGVpZ2h0PSJudWxsIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJudWxsIiBmaWxsPSIjMDAwIiA+ICAgIDxwYXRoIGQ9Ik0gNS42MjUgNC4yMTg3NSBMIDQuMjE4NzUgNS42MjUgTCAxMC41OTM3NSAxMiBMIDQuMjE4NzUgMTguMzc1IEwgNS42MjUgMTkuNzgxMjUgTCAxMiAxMy40MDYyNSBMIDE4LjM3NSAxOS43ODEyNSBMIDE5Ljc4MTI1IDE4LjM3NSBMIDEzLjQwNjI1IDEyIEwgMTkuNzgxMjUgNS42MjUgTCAxOC4zNzUgNC4yMTg3NSBMIDEyIDEwLjU5Mzc1IEwgNS42MjUgNC4yMTg3NSB6Ij48L3BhdGg+PC9zdmc+'/>
+          </md-button>
+        </md-input-container>
+      </div>
+      </div>
+      <div flex-offset="5" flex>
+        <md-input-container>
+          <label>Type</label>
+          <md-select ng-model="movietype" ng-change="fetchResults()">
+            <md-option ng-repeat="type in types" value="{{type}}">{{type}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container>
+          <label>Year</label>
+          <md-select ng-model="movieyear" ng-change="fetchResults()">
+            <md-option ng-repeat="year in years" value="{{year}}">{{year}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container ng-hide="true">
+          <label>Order by</label>
+          <md-select ng-model="movieorder">
+            <md-option ng-repeat="resultsOrder in resultsOrders" value="{{resultsOrder}}">{{resultsOrder}}</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      </div>
+    </md-card>
+      <md-card ng-hide="isSearchEmpty()||showDetails" >
+        <md-progress-linear ng-show="isLoading" md-mode="indeterminate"></md-progress-linear>
+       <md-subheader class="md-sticky">Search Results</md-subheader>
+      <md-list flex>
+    <md-list-item  class="md-2-line" ng-show="isResultListEmpty()">
+          <h3>No {{ movietype }} matching for '{{search}}'</h3>
+        </md-list-item>
+       <md-list-item ng-hide="false" ng-click="GetDetails(movie)" class="md-3-line container" ng-repeat="movie in movies | orderBy:'Title'">
+         <img ng-src="{{ movie.Poster}}" onError="this.src='http://sedacity.com/wp-content/uploads/2016/02/nopicture.gif';"  class="md-avatar" />
+         <div class="md-list-item-text">
+              <div layout="row">
+           <div flex="90">
+           <h3>{{ movie.Title }}</h3>
+         </div>
+         <div hide-xs  hide-sm layout-align="end stretch">
+           <h3>{{ movie.Type }}</h3>
+         </div>
+       </div>
+           <div><p>{{ movie.Year }} </p></div>
+           <div show-xs show-sm hide-gt-xs ><p>{{ movie.Type }}</p></div>
+     </div>
+       </md-list-item>
+     </md-list>
+   </md-card>
+   <md-card ng-if="showDetails">
+  <div layout="row" layout-align="center center">
+       <md-progress-circular ng-if="isLoading" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+     </div>
+     <!--For operations where the user is asked to wait a moment while something finishes up, and it’s not necessary to expose what's happening behind the scenes and how long it will take, use an md-mode="indeterminate" indicator.-->
+     <div ng-show="isDoneLoading()">
+       <md-card-title>
+         <md-card-title-text>
+         <span class="md-headline">{{movieInfo.Title}}</span>
+             <h5> {{movieInfo.Runtime}} | {{movieInfo.Year}} | {{movieInfo.Genre}} | Directed by {{movieInfo.Director}} | {{movieInfo.imdbRating}}/10</h5>
+         </md-card-title-text>
+       </md-card-title>
+       <md-card-content>
+         <div layout="row" layout-sm="column" layout-xs="column">
+          <div flex="30"> <img ng-src="{{ movieInfo.Poster || 'http://jimpunk.com/Loading/loading34.gif' }}" onError="this.src='http://sedacity.com/wp-content/uploads/2016/02/nopicture.gif';" style="heigth=70px;" alt=""></div>
+          <div flex="5"></div>
+         <div  layout-fill flex="60">
+           <h3>Synopsis</h3>
+         <p> {{movieInfo.Plot}} </p>
+         <h3>Writers</h3>
+         <p> {{movieInfo.Writer}} </p>
+         <h3>Actors</h3>
+        <a layout-padding  layout="column" target="_blank" href="https://fr.wikipedia.org/wiki/{{actor.name}}" ng-repeat="actor in actors">{{actor.name}}</a>
+         <h3>Awards</h3>
+         <p>{{movieInfo.Awards}}</p>
+       </div>
+     </div>
+       </md-card-content>
+       <md-card-actions layout="row" layout-align="end center">
+         <md-button ng-click="ReturnToList()">Return to list</md-button>
+         <md-button
+         target="_blank"
+          href="https://www.youtube.com/results?search_query={{movieInfo.Title}}+{{movieInfo.Year}}+trailer">Watch Trailer</md-button>
+       </md-card-actions>
+     </div>
+     </md-card>
+   </md-content>
 </div>
-
-
-<div id="landoPage">
-
-    <h1> Welcome</h1>
-
-    <p> At Social Cinema Review, we believe in connections: our site is designed with that fundamental belief in mind.
-        Whether it's a Hollywood classic from the Golden Age of cinema, or the Summer's hottest new show, we feel
-        movies and television are a way of bringing people, from anywhere in the world, together around one story.
-    </p>
-
-    <img id="pic1" src="https://static.pexels.com/photos/48660/pexels-photo-48660.jpeg" alt="crowd"
-         style="width:304px;height:228px;">
-
-    <h1> Movie Talk for Movie People </h1>
-
-    <p> Whether you're shopping for a new genre or a die hard fan of an old one, Social Cinema Review is designed for people to review
-        and discuss film and television. By mashing together Facebook and OMBD's APIs, we discovered a unique way to
-        allow people to search new titles, post and share reviews, or comment on existing discussions. The power is in your
-        hands!
-    </p>
-
-    <img id="pic2" src="https://static.pexels.com/photos/306534/pexels-photo-306534.jpeg" alt="people"
-         style="width:304px;height:228px;">
-
-    <!--<h1> Motivation </h1>-->
-
-    <!--<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper finibus odio. Fusce luctus vestibulum nunc-->
-        <!--in tincidunt. Suspendisse id dictum quam. Sed volutpat dictum dui, non rutrum enim. Maecenas in rutrum purus.-->
-        <!--Etiam a mi enim. Maecenas placerat eu neque non bibendum. Mauris dolor leo, faucibus ac metus et, accumsan-->
-        <!--hendrerit elit. Phasellus feugiat sapien at quam congue molestie. Ut sagittis, augue et tristique viverra, odio-->
-        <!--elit imperdiet dui, ut condimentum nisi risus vitae lorem. Vivamus aliquet lorem in elementum dignissim </p>-->
-
-</div>
-<div id="colorWrapper"></div>
-
-
-<script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '1248196511916479',
-            cookie: true,
-            xfbml: true,
-            version: 'v2.8'
-        });
-        FB.AppEvents.logPageView();
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-</script>
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-
-</body>
-
-

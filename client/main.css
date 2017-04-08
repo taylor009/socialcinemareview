@@ -1,22 +1,12 @@
-/* CSS declarations go here */
-input[type="search"] {
-    height: 64px !important; /* or height of nav */
-}
-
 body {
-    background-image: url("http://i.imgur.com/vPgi1Ul.jpg");
-    /*background-image: url("https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?w=940&h=650&auto=compress&cs=tinysrgb");*/
+    /*background-image: url("http://i.imgur.com/vPgi1Ul.jpg");*/
+    background-image: url("https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?w=940&h=650&auto=compress&cs=tinysrgb");
     background-size: cover;
 
 }
 
 a {
     font-family: 'Quicksand', sans-serif;
-}
-
-.nav-wrapper{
-    /*background-color: orange;*/
-/*margin-bottom: 0;*/
 }
 
 h1 {padding-top: 0;
@@ -38,7 +28,12 @@ p {
 #landoPage {
     background-color: rgba(45,140, 240,0.5);
     font-family: 'Poppins', sans-serif;
-  }
+}
+
+#login{
+    margin-left: 2em;
+    text-decoration: none;
+}
 
 
 
@@ -52,4 +47,3 @@ p {
         left: 25%;
     }
 }
-
